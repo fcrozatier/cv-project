@@ -1,7 +1,7 @@
 import "./App.css";
 import Section from "./components/Section";
-import "./components/inputs/TextInput";
-import TextInput from "./components/inputs/TextInput";
+import Input from "./components/Input";
+import Form from "./components/Form";
 
 function App() {
   return (
@@ -14,7 +14,12 @@ function App() {
           ["phone", "phone"],
         ]}
       />
-      <TextInput label="Name" />
+      <Form>
+        <Input label="name" type="text" />
+        <Input label="email" type="email" />
+        <Input label="phone" type="phone" />
+        <Input label="date" type="date" />
+      </Form>
     </div>
   );
 }
