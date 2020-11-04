@@ -1,0 +1,22 @@
+.btn {
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-rounded {
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid;
+  display: inline-flex;
+  width: 2.3rem;
+  height: 2.3rem;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.btn-info {
+  background-color: blue;
+  color: white;
+}
