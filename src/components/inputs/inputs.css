@@ -1,0 +1,18 @@
+.field {
+  padding: 10px;
+  font-family: inherit;
+  font-size: 18px;
+}
+
+.valid {
+  border: 1px solid green;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+.errorMessage {
+  display: none;
+  color: red;
+}
