@@ -57,7 +57,7 @@ class Input extends React.Component {
     const { label, type } = this.props;
     const phonePattern = type === "phone" ? "\\d{5}" : ".+";
     return (
-      <div>
+      <>
         <label htmlFor={label}>{this.capitalize(label)}</label>
         <input
           name={label}
@@ -72,7 +72,7 @@ class Input extends React.Component {
           required
         />
         <div className="errorMessage"></div>
-      </div>
+      </>
     );
   }
 }

@@ -4,7 +4,6 @@
 }
 
 .btn-rounded {
-  background: transparent;
   border-radius: 50%;
   border: 1px solid;
   display: inline-flex;
@@ -18,5 +17,16 @@
 
 .btn-info {
   background-color: blue;
+  color: white;
+}
+
+.btn-valid {
+  border: 1px solid green;
+  color: green;
+  font-size: 1em;
+}
+
+.btn-valid:hover {
+  background-color: green;
   color: white;
 }
