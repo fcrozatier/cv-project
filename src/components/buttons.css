@@ -12,7 +12,7 @@
   display: inline-flex;
   width: 50px;
   height: 50px;
-  font-size: 1.3em;
+  font-size: 1.5em;
   justify-content: center;
   align-items: center;
   padding: 15px;
@@ -49,7 +49,7 @@
 }
 
 .btn-active {
-  animation: btn 300ms ease-in-out forwards;
+  animation: btn 300ms ease-in-out forwards, rotate 300ms linear forwards;
 }
 
 @keyframes btn {
@@ -64,5 +64,11 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(45deg);
   }
 }

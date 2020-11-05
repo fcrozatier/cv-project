@@ -1,28 +1,21 @@
 .container {
   max-width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
 }
 
 .card {
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
   padding: 30px;
   background-color: white;
   border: 1px solid #eee;
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
   position: relative;
+  z-index: 1;
 }
 
 .edit-section {
   position: absolute;
   top: 35px;
   right: 30px;
-  /* float: right; */
-}
-
-.form-container {
-  margin: 10px auto;
-  max-width: 50%;
-  background-color: white;
-  padding: 30px;
 }
 
 .name > .label,

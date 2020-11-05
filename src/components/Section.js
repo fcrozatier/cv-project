@@ -3,6 +3,7 @@ import Form from "./Form";
 import Input from "./Input";
 import Button from "./Button";
 import "./Section.css";
+import "./form.css";
 
 class Section extends React.Component {
   constructor(props) {
@@ -21,8 +22,9 @@ class Section extends React.Component {
     });
   };
 
-  displayForm = () => {
-    console.log("displaying form");
+  toggleForm = () => {
+    const form = document.querySelector(".form-container");
+    form.classList.add("slide-in");
   };
 
   render() {
@@ -49,7 +51,7 @@ class Section extends React.Component {
           <div className="card">
             {cardElems}
             <div className="edit-section">
-              <Button onClick={this.displayForm}>+</Button>
+              <Button onClick={this.toggleForm}></Button>
             </div>
           </div>
           <div className="form-container">

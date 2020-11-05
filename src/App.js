@@ -12,6 +12,13 @@ function App() {
           ["phone", "phone"],
         ]}
       />
+      <Section
+        fields={[
+          ["name", "text"],
+          ["email", "email"],
+          ["phone", "phone"],
+        ]}
+      />
     </div>
   );
 }
