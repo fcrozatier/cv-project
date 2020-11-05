@@ -1,7 +1,5 @@
 import "./App.css";
 import Section from "./components/Section";
-import Input from "./components/Input";
-import Form from "./components/Form";
 
 function App() {
   return (
@@ -14,12 +12,6 @@ function App() {
           ["phone", "phone"],
         ]}
       />
-      <Form>
-        <Input label="name" type="text" />
-        <Input label="email" type="email" />
-        <Input label="phone" type="phone" />
-        <Input label="date" type="date" />
-      </Form>
     </div>
   );
 }

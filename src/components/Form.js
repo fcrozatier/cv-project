@@ -8,7 +8,6 @@ class Form extends React.Component {
     this.state = {};
   }
   render() {
-    console.log(this.props.children);
     return (
       <>
         <form className="form">

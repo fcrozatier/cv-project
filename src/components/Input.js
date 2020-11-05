@@ -2,20 +2,6 @@ import React from "react";
 import "./inputs.css";
 
 class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      [this.props.label]: "",
-    };
-  }
-
-  handleChange = (e) => {
-    const value = e.target.value;
-    this.setState({
-      [this.props.label]: value,
-    });
-  };
-
   validate = (e) => {
     const validity = e.target.validity;
     console.log("Input -> validity", validity);
@@ -26,6 +12,7 @@ class Input extends React.Component {
     } else if (validity.patternMismatch) {
       this.displayError(e, `The ${e.target.name} must be 5 digits long`);
     } else if (validity.valid) {
+      this.removeError(e);
     }
   };
 
@@ -63,10 +50,10 @@ class Input extends React.Component {
           name={label}
           type={type}
           id={label}
-          value={this.state[label]}
+          value={this.props.value}
           autoComplete="off"
           className="field"
-          onChange={this.handleChange}
+          onChange={this.props.onChange}
           onBlur={this.validate}
           pattern={phonePattern}
           required
