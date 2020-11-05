@@ -8,7 +8,6 @@ class Section extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.initializeState(this.props.fields);
-    // console.log("Section -> constructor -> this.state", this.state);
   }
 
   initializeState(fields) {
@@ -20,7 +19,6 @@ class Section extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    // console.log("Section -> constructor -> this.state", this.state);
   };
 
   displayForm = () => {};
@@ -36,10 +34,17 @@ class Section extends React.Component {
       />
     ));
 
+    const cardElems = this.props.fields.map((item, index) => (
+      <div className={item[0]} key={index}>
+        <span className="label">{item[0]}</span>
+        {this.state[item[0]]}
+      </div>
+    ));
+
     return (
-      <>
+      <div>
         <div className="container">
-          <div className="card">Hey there !</div>
+          <div className="card">{cardElems}</div>
           <button
             onClick={this.displayForm}
             className="btn btn-rounded btn-info"
@@ -48,7 +53,7 @@ class Section extends React.Component {
           </button>
         </div>
         <Form>{inputs}</Form>
-      </>
+      </div>
     );
   }
 }

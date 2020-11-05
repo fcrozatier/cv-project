@@ -4,13 +4,12 @@ import "./inputs.css";
 class Input extends React.Component {
   validate = (e) => {
     const validity = e.target.validity;
-    console.log("Input -> validity", validity);
     if (validity.valueMissing) {
       this.displayError(e, "This field is required");
     } else if (validity.typeMismatch) {
       this.displayError(e, `This ${e.target.name} is not valid`);
     } else if (validity.patternMismatch) {
-      this.displayError(e, `The ${e.target.name} must be 5 digits long`);
+      this.displayError(e, `The ${e.target.name} must be 10 digits long`);
     } else if (validity.valid) {
       this.removeError(e);
     }
@@ -42,7 +41,7 @@ class Input extends React.Component {
 
   render() {
     const { label, type } = this.props;
-    const phonePattern = type === "phone" ? "\\d{5}" : ".+";
+    const phonePattern = type === "phone" ? "\\d{10}" : ".+";
     return (
       <>
         <label htmlFor={label}>{this.capitalize(label)}</label>

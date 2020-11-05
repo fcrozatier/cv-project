@@ -7,4 +7,15 @@
   padding: 30px;
   background-color: white;
   border: 1px solid #eee;
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.name > .label,
+.email > .label,
+.phone > .label {
+  display: none;
+}
+
+.name {
+  font-size: 25px;
 }
