@@ -1,8 +1,8 @@
 import React from "react";
 import Form from "./Form";
 import Input from "./Input";
+import Button from "./Button";
 import "./Section.css";
-import "./buttons.css";
 
 class Section extends React.Component {
   constructor(props) {
@@ -21,7 +21,9 @@ class Section extends React.Component {
     });
   };
 
-  displayForm = () => {};
+  displayForm = () => {
+    console.log("displaying form");
+  };
 
   render() {
     const inputs = this.props.fields.map((item, index) => (
@@ -44,15 +46,16 @@ class Section extends React.Component {
     return (
       <div>
         <div className="container">
-          <div className="card">{cardElems}</div>
-          <button
-            onClick={this.displayForm}
-            className="btn btn-rounded btn-info"
-          >
-            +
-          </button>
+          <div className="card">
+            {cardElems}
+            <div className="edit-section">
+              <Button onClick={this.displayForm}>+</Button>
+            </div>
+          </div>
+          <div className="form-container">
+            <Form>{inputs}</Form>
+          </div>
         </div>
-        <Form>{inputs}</Form>
       </div>
     );
   }

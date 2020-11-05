@@ -1,6 +1,6 @@
 import React from "react";
+import Button from "./Button";
 import "./form.css";
-import "./buttons.css";
 
 class Form extends React.Component {
   constructor(props) {
@@ -12,7 +12,9 @@ class Form extends React.Component {
       <>
         <form className="form">
           {this.props.children}
-          <button className="btn btn-rounded btn-valid">Ok</button>
+          <div className="submit-btn">
+            <button className="btn btn-alt">Update</button>
+          </div>
         </form>
       </>
     );

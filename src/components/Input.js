@@ -44,7 +44,9 @@ class Input extends React.Component {
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
     return (
       <>
-        <label htmlFor={label}>{this.capitalize(label)}</label>
+        <label className="field-label" htmlFor={label}>
+          {this.capitalize(label)}
+        </label>
         <input
           name={label}
           type={type}

@@ -1,4 +1,9 @@
+.field-label {
+  margin-top: 20px;
+}
+
 .field {
+  margin-top: 10px;
   padding: 10px;
   font-family: inherit;
   font-size: 18px;
@@ -15,4 +20,5 @@
 .errorMessage {
   display: none;
   color: red;
+  margin-top: 10px;
 }
