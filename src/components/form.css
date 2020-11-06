@@ -24,10 +24,6 @@
   animation: slideIn 400ms ease-in-out forwards;
 }
 
-.slide-out {
-  animation: slideOut 400ms ease-in-out forwards;
-}
-
 .show {
   max-height: 1000px;
 }

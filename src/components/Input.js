@@ -2,6 +2,14 @@ import React from "react";
 import "./inputs.css";
 
 class Input extends React.Component {
+  handleChange = (e) => {
+    if (e.target.validity.valid) {
+      this.removeError(e);
+      e.target.classList.add("valid");
+    }
+    this.props.onChange(e);
+  };
+
   validate = (e) => {
     const validity = e.target.validity;
     if (validity.valueMissing) {
@@ -54,7 +62,7 @@ class Input extends React.Component {
           value={this.props.value}
           autoComplete="off"
           className="field"
-          onChange={this.props.onChange}
+          onChange={this.handleChange}
           onBlur={this.validate}
           pattern={phonePattern}
           required

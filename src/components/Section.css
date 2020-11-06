@@ -1,37 +1,55 @@
-.container {
-  max-width: 80%;
-  margin: 0 auto 20px auto;
+.overflow-container {
   overflow: hidden;
 }
 
+.container {
+  max-width: 80%;
+  margin: 0 auto 20px auto;
+}
+
 .card {
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 35px;
   background-color: white;
   border: 1px solid #eee;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
   z-index: 1;
 }
 
 .edit-section {
-  position: absolute;
-  top: 35px;
-  right: 30px;
+  display: grid;
+  align-items: center;
+}
+
+.section-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: Times, serif;
+  font-weight: 600;
+  font-size: 30px;
 }
 
 .name > .label,
 .email > .label,
-.phone > .label {
+.label {
   display: none;
 }
 
-.name {
-  font-size: 25px;
-  height: 25px;
+.name,
+.institution {
+  font-weight: 100;
+  font-size: 35px;
 }
 
 .email,
-.phone {
-  height: 1em;
+.phone,
+.date {
+  font-size: 18px;
   margin-top: 5px;
+}
+
+.degree {
+  font-size: 22px;
+  /* font-weight: bold; */
 }

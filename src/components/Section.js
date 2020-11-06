@@ -2,7 +2,7 @@ import React from "react";
 import Form from "./Form";
 import Input from "./Input";
 import Button from "./Button";
-import "./Section.css";
+import "./section.css";
 import "./form.css";
 
 class Section extends React.Component {
@@ -17,10 +17,20 @@ class Section extends React.Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
+    this.setState(() => {
+      return { [e.target.name]: e.target.value };
     });
   };
+
+  formatDate(date) {
+    if (date === "") return "";
+    const formattedDate = new Date(date).toLocaleString(undefined, {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    return formattedDate;
+  }
 
   openForm = () => {
     this.formContainer.classList.add("slide-in");
@@ -46,15 +56,20 @@ class Section extends React.Component {
     const cardElems = this.props.fields.map((item, index) => (
       <div className={item[0]} key={index}>
         <span className="label">{item[0]}</span>
-        {this.state[item[0]]}
+        {item[0] === "date"
+          ? this.formatDate(this.state[item[0]])
+          : this.state[item[0]]}
       </div>
     ));
 
     return (
-      <div>
-        <div name={this.props.name} className="container">
+      <div className="overflow-container">
+        <div name={this.props.title} className="container">
           <div className="card">
-            {cardElems}
+            <div className="card_content">
+              <h2 className="section-title">{this.props.title}</h2>
+              {cardElems}
+            </div>
             <div className="edit-section">
               <Button onOpen={this.openForm} onClose={this.closeForm}></Button>
             </div>
@@ -69,7 +84,7 @@ class Section extends React.Component {
 
   componentDidMount() {
     this.formContainer = document.querySelector(
-      `[name="${this.props.name}"] .form-container`
+      `[name="${this.props.title}"] .form-container`
     );
   }
 }
