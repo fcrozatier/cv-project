@@ -1,7 +1,13 @@
 import React from "react";
 import "./inputs.css";
+var uniqid = require("uniqid");
 
 class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.label = uniqid(this.props.label);
+  }
+
   handleChange = (e) => {
     if (e.target.validity.valid) {
       this.removeError(e);
@@ -52,13 +58,13 @@ class Input extends React.Component {
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
     return (
       <>
-        <label className="field-label" htmlFor={label}>
+        <label className="field-label" htmlFor={this.label}>
           {this.capitalize(label)}
         </label>
         <input
           name={label}
           type={type}
-          id={label}
+          id={this.label}
           value={this.props.value}
           autoComplete="off"
           className="field"

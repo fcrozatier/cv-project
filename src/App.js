@@ -21,6 +21,15 @@ function App() {
           ["date", "date"],
         ]}
       />
+      <Section
+        title="Work"
+        fields={[
+          ["company", "text"],
+          ["position", "text"],
+          ["description", "text"],
+          ["date", "date"],
+        ]}
+      />
     </div>
   );
 }
