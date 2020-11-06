@@ -7,6 +7,7 @@ function App() {
       <header>CV App</header>
       <Section
         title="Profile"
+        clonable={false}
         fields={[
           ["name", "text"],
           ["email", "email"],
@@ -15,6 +16,7 @@ function App() {
       />
       <Section
         title="Education"
+        clonable={false}
         fields={[
           ["institution", "text"],
           ["degree", "text"],
@@ -23,10 +25,11 @@ function App() {
       />
       <Section
         title="Work"
+        clonable={false}
         fields={[
           ["company", "text"],
           ["position", "text"],
-          ["description", "text"],
+          ["description", "textarea"],
           ["date", "date"],
         ]}
       />

@@ -13,11 +13,13 @@
 .form {
   display: grid;
   grid-template-columns: 1fr;
-  padding: 30px;
+  padding: 30px 40px 35px 40px;
 }
 
 .submit-btn {
   margin: 20px auto 0 auto;
+  display: none;
+  gap: 10px;
 }
 
 .slide-in {

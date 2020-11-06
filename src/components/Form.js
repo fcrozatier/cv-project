@@ -7,13 +7,20 @@ class Form extends React.Component {
     super(props);
     this.state = {};
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     return (
       <>
-        <form className="form">
+        <form className="form" onSubmit={this.handleSubmit} noValidate>
           {this.props.children}
           <div className="submit-btn">
-            <button className="btn btn-alt">Update</button>
+            <button type="submit"></button>
+            {/* <button className="btn btn-alt">Update</button>
+            <button className="btn btn-alt">Add</button> */}
           </div>
         </form>
       </>

@@ -1,11 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 import "./inputs.css";
 var uniqid = require("uniqid");
 
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.label = uniqid(this.props.label);
+    this.labelId = uniqid(this.props.label);
   }
 
   handleChange = (e) => {
@@ -56,23 +57,39 @@ class Input extends React.Component {
   render() {
     const { label, type } = this.props;
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
+    const customTag = styled.input;
+    const tag = type === "textarea" ? "textarea" : "input";
     return (
       <>
-        <label className="field-label" htmlFor={this.label}>
+        <label className="field-label" htmlFor={this.labelId}>
           {this.capitalize(label)}
         </label>
-        <input
-          name={label}
-          type={type}
-          id={this.label}
-          value={this.props.value}
-          autoComplete="off"
-          className="field"
-          onChange={this.handleChange}
-          onBlur={this.validate}
-          pattern={phonePattern}
-          required
-        />
+        {type === "textarea" ? (
+          <textarea
+            name={label}
+            type={type}
+            id={this.labelId}
+            value={this.props.value}
+            autoComplete="off"
+            className="field textarea"
+            onChange={this.handleChange}
+            onBlur={this.validate}
+            required
+          />
+        ) : (
+          <input
+            name={label}
+            type={type}
+            id={this.labelId}
+            value={this.props.value}
+            autoComplete="off"
+            className="field"
+            onChange={this.handleChange}
+            onBlur={this.validate}
+            pattern={phonePattern}
+            required
+          />
+        )}
         <div className="errorMessage"></div>
       </>
     );
