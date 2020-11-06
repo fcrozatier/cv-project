@@ -24,7 +24,7 @@ class Section extends React.Component {
 
   formatDate(date) {
     if (date === "") return "";
-    const formattedDate = new Date(date).toLocaleString(undefined, {
+    const formattedDate = new Date(date).toLocaleString("en-GB", {
       day: "numeric",
       month: "long",
       year: "numeric",
@@ -62,8 +62,8 @@ class Section extends React.Component {
       </div>
     ));
 
-    const addFormBtn = this.props.clonable ? (
-      <Button stateless={true}></Button>
+    const addSubsectionBtn = this.props.clonable ? (
+      <Button className="btn-addSubsection" stateless={true}></Button>
     ) : null;
 
     return (
@@ -83,10 +83,12 @@ class Section extends React.Component {
             </div>
           </div>
           <div className="form-container">
-            <Form>{inputs}</Form>
-            <Form>{inputs}</Form>
-            {addFormBtn}
-            {/* <Form>{inputs}</Form> */}
+            <div className="scroll-container">
+              <Form>{inputs}</Form>
+              {/* <Form>{inputs}</Form> */}
+              {/* <Form>{inputs}</Form> */}
+            </div>
+            {addSubsectionBtn}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ class Button extends React.Component {
     super(props);
     this.state = { open: false, symbol: "+" };
     this.content = ["+", "×"];
+    this.classes = this.props.className || "";
   }
 
   handleClick = (e) => {
@@ -32,7 +33,7 @@ class Button extends React.Component {
       <button
         onClick={this.handleClick}
         onAnimationEnd={this.removeActive}
-        className="btn btn-rounded btn-info"
+        className={"btn btn-rounded btn-info " + this.classes}
         value="+"
       >
         {this.state.symbol}

@@ -4,6 +4,10 @@
   transition: max-height 1000ms;
   animation: slideOut 400ms ease-in-out forwards;
   z-index: 0;
+  /* position: relative; */
+}
+
+.scroll-container {
   display: flex;
   justify-content: start;
   overflow-x: auto;
