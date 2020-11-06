@@ -10,8 +10,8 @@ class Button extends React.Component {
 
   handleClick = (e) => {
     this.addActive(e);
+    this.state.open ? this.props.onClose(e) : this.props.onOpen(e);
     this.setState({ open: !this.state.open });
-    this.props.onClick(e);
   };
 
   addActive(e) {
@@ -20,7 +20,7 @@ class Button extends React.Component {
 
   removeActive = (e) => {
     e.target.classList.remove("btn-active");
-    this.setState({ symbol: this.content[Number(this.state.open)] });
+    this.setState({ symbol: this.content[+this.state.open] });
   };
 
   render() {

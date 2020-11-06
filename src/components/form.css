@@ -1,38 +1,62 @@
+.form-container {
+  box-sizing: initial;
+  margin: 10px auto;
+  max-width: 50%;
+  background-color: white;
+  max-height: 0;
+  transition: max-height 1000ms;
+  position: relative;
+  z-index: 0;
+  animation: slideOut 400ms ease-in-out forwards;
+}
+
 .form {
   display: grid;
   grid-template-columns: 1fr;
+  padding: 30px;
 }
 
 .submit-btn {
   margin: 20px auto 0 auto;
 }
 
-.form-container {
-  margin: 10px auto;
-  max-width: 50%;
-  background-color: white;
-  padding: 30px;
-  transform: translateY(-110%);
-  display: none;
-  position: relative;
-  z-index: 0;
-  opacity: 1;
+.slide-in {
+  animation: slideIn 400ms ease-in-out forwards;
 }
 
-.slide-in {
-  display: block;
-  animation: slideIn 400ms ease-in-out forwards;
+.slide-out {
+  animation: slideOut 400ms ease-in-out forwards;
+}
+
+.show {
+  max-height: 1000px;
 }
 
 @keyframes slideIn {
   0% {
     opacity: 0;
+    transform: scale(0.4);
   }
   50% {
     opacity: 0.3;
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110%);
   }
 }

@@ -22,9 +22,14 @@ class Section extends React.Component {
     });
   };
 
-  toggleForm = () => {
-    const form = document.querySelector(".form-container");
-    form.classList.add("slide-in");
+  openForm = () => {
+    this.formContainer.classList.add("slide-in");
+    this.formContainer.classList.add("show");
+  };
+
+  closeForm = () => {
+    this.formContainer.classList.remove("slide-in");
+    this.formContainer.classList.remove("show");
   };
 
   render() {
@@ -47,11 +52,11 @@ class Section extends React.Component {
 
     return (
       <div>
-        <div className="container">
+        <div name={this.props.name} className="container">
           <div className="card">
             {cardElems}
             <div className="edit-section">
-              <Button onClick={this.toggleForm}></Button>
+              <Button onOpen={this.openForm} onClose={this.closeForm}></Button>
             </div>
           </div>
           <div className="form-container">
@@ -59,6 +64,12 @@ class Section extends React.Component {
           </div>
         </div>
       </div>
+    );
+  }
+
+  componentDidMount() {
+    this.formContainer = document.querySelector(
+      `[name="${this.props.name}"] .form-container`
     );
   }
 }

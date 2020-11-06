@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <header>CV App</header>
       <Section
+        name="Profile"
         fields={[
           ["name", "text"],
           ["email", "email"],
