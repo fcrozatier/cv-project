@@ -62,6 +62,10 @@ class Section extends React.Component {
       </div>
     ));
 
+    const addFormBtn = this.props.clonable ? (
+      <Button stateless={true}></Button>
+    ) : null;
+
     return (
       <div className="overflow-container">
         <div name={this.props.title} className="container">
@@ -71,11 +75,18 @@ class Section extends React.Component {
               {cardElems}
             </div>
             <div className="edit-section">
-              <Button onOpen={this.openForm} onClose={this.closeForm}></Button>
+              <Button
+                onOpen={this.openForm}
+                onClose={this.closeForm}
+                stateless={false}
+              ></Button>
             </div>
           </div>
           <div className="form-container">
             <Form>{inputs}</Form>
+            <Form>{inputs}</Form>
+            {addFormBtn}
+            {/* <Form>{inputs}</Form> */}
           </div>
         </div>
       </div>

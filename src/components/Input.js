@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import "./inputs.css";
 var uniqid = require("uniqid");
 
@@ -57,8 +56,6 @@ class Input extends React.Component {
   render() {
     const { label, type } = this.props;
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
-    const customTag = styled.input;
-    const tag = type === "textarea" ? "textarea" : "input";
     return (
       <>
         <label className="field-label" htmlFor={this.labelId}>

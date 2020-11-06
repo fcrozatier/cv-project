@@ -9,18 +9,22 @@ class Button extends React.Component {
   }
 
   handleClick = (e) => {
-    this.addActive(e);
-    this.state.open ? this.props.onClose(e) : this.props.onOpen(e);
-    this.setState({ open: !this.state.open });
+    if (this.props.stateless) {
+      e.target.classList.add("btn-pops");
+    } else {
+      e.target.classList.add("btn-pops-and-turns");
+      this.state.open ? this.props.onClose(e) : this.props.onOpen(e);
+      this.setState({ open: !this.state.open });
+    }
   };
 
-  addActive(e) {
-    e.target.classList.add("btn-active");
-  }
-
   removeActive = (e) => {
-    e.target.classList.remove("btn-active");
-    this.setState({ symbol: this.content[+this.state.open] });
+    if (this.props.stateless) {
+      e.target.classList.remove("btn-pops");
+    } else {
+      e.target.classList.remove("btn-pops-and-turns");
+      this.setState({ symbol: this.content[+this.state.open] });
+    }
   };
 
   render() {

@@ -30,26 +30,27 @@
   font-size: 30px;
 }
 
-.name > .label,
-.email > .label,
 .label {
   display: none;
 }
 
 .name,
-.institution {
+.institution,
+.company {
   font-weight: 100;
   font-size: 35px;
 }
 
 .email,
 .phone,
-.date {
+.date,
+.description {
   font-size: 18px;
   margin-top: 5px;
 }
 
-.degree {
+.degree,
+.position {
   font-size: 22px;
-  /* font-weight: bold; */
+  margin-top: 5px;
 }

@@ -5,6 +5,8 @@
   background-color: transparent;
   font-family: inherit;
   font-size: inherit;
+  /* transform: rotate(0deg);
+  transition: transform 300ms ease-in-out; */
 }
 
 .btn-rounded {
@@ -46,8 +48,12 @@
   color: white;
 }
 
-.btn-active {
-  animation: btn 300ms ease-in-out forwards, rotate 300ms linear forwards;
+.btn-pops {
+  animation: btn 300ms ease-in-out forwards;
+}
+
+.btn-pops-and-turns {
+  animation: btn 300ms ease-in-out forwards, rotate 300ms ease-in-out forwards;
 }
 
 @keyframes btn {

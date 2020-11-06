@@ -16,7 +16,7 @@ function App() {
       />
       <Section
         title="Education"
-        clonable={false}
+        clonable={true}
         fields={[
           ["institution", "text"],
           ["degree", "text"],
@@ -25,7 +25,7 @@ function App() {
       />
       <Section
         title="Work"
-        clonable={false}
+        clonable={true}
         fields={[
           ["company", "text"],
           ["position", "text"],
