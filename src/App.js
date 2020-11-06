@@ -1,40 +1,54 @@
-import "./App.css";
+import React from "react";
 import Section from "./components/Section";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header>CV App</header>
-      <Section
-        title="Profile"
-        clonable={false}
-        fields={[
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      0: {
+        title: "Profile",
+        clonable: false,
+        fields: [
           ["name", "text"],
           ["email", "email"],
           ["phone", "phone"],
-        ]}
-      />
-      <Section
-        title="Education"
-        clonable={true}
-        fields={[
+        ],
+      },
+      1: {
+        title: "Education",
+        clonable: true,
+        fields: [
           ["institution", "text"],
           ["degree", "text"],
           ["date", "date"],
-        ]}
-      />
-      <Section
-        title="Work"
-        clonable={true}
-        fields={[
+        ],
+      },
+      2: {
+        title: "Work",
+        clonable: true,
+        fields: [
           ["company", "text"],
           ["position", "text"],
           ["description", "textarea"],
           ["date", "date"],
-        ]}
-      />
-    </div>
-  );
+        ],
+      },
+    };
+  }
+
+  render() {
+    const sections = Object.keys(this.state).map((index) => {
+      return <Section key={+index} {...this.state[+index]} />;
+    });
+    console.log(sections);
+    return (
+      <div className="App">
+        <header>CV App</header>
+        {sections}
+      </div>
+    );
+  }
 }
 
 export default App;

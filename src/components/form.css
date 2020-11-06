@@ -7,7 +7,6 @@
   max-height: 0;
   transition: max-height 1000ms;
   animation: slideOut 400ms ease-in-out forwards;
-  z-index: 0;
   display: flex;
   justify-content: flex-start;
   overflow-x: auto;
