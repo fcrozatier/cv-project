@@ -17,11 +17,6 @@ class Form extends React.Component {
       <>
         <form className="form" onSubmit={this.handleSubmit} noValidate>
           {this.props.children}
-          <div className="submit-btn">
-            <button type="submit"></button>
-            {/* <button className="btn btn-alt">Update</button>
-            <button className="btn btn-alt">Add</button> */}
-          </div>
         </form>
       </>
     );

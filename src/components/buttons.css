@@ -37,13 +37,6 @@
   color: white;
 }
 
-.btn-addSubsection {
-  background-color: rgb(0, 200, 0);
-  position: absolute;
-  right: -70px;
-  top: calc(50% - 25px);
-}
-
 .btn-valid {
   border: 1px solid green;
   color: green;
@@ -57,6 +50,11 @@
 
 .btn-pops {
   animation: btn 300ms ease-in-out forwards;
+}
+
+.btn-pops-delayed {
+  animation: btn 300ms ease-in-out forwards;
+  animation-delay: 300ms;
 }
 
 .btn-pops-and-turns {

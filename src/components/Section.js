@@ -35,11 +35,19 @@ class Section extends React.Component {
   openForm = () => {
     this.formContainer.classList.add("slide-in");
     this.formContainer.classList.add("show");
+    if (this.addSubsectionBtn) {
+      this.addSubsectionBtn.classList.add("full-opacity");
+      this.addSubsectionBtn.classList.add("btn-pops-delayed");
+    }
   };
 
   closeForm = () => {
     this.formContainer.classList.remove("slide-in");
     this.formContainer.classList.remove("show");
+    if (this.addSubsectionBtn) {
+      this.addSubsectionBtn.classList.remove("full-opacity");
+      this.addSubsectionBtn.classList.remove("btn-pops-delayed");
+    }
   };
 
   render() {
@@ -82,11 +90,11 @@ class Section extends React.Component {
               ></Button>
             </div>
           </div>
-          <div className="form-container">
-            <div className="scroll-container">
+          <div className="form-displayer">
+            <div className="form-container">
               <Form>{inputs}</Form>
-              {/* <Form>{inputs}</Form> */}
-              {/* <Form>{inputs}</Form> */}
+              <Form>{inputs}</Form>
+              <Form>{inputs}</Form>
             </div>
             {addSubsectionBtn}
           </div>
@@ -98,6 +106,10 @@ class Section extends React.Component {
   componentDidMount() {
     this.formContainer = document.querySelector(
       `[name="${this.props.title}"] .form-container`
+    );
+
+    this.addSubsectionBtn = document.querySelector(
+      `[name="${this.props.title}"] .btn-addSubsection`
     );
   }
 }
