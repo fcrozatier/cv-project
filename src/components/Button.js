@@ -22,6 +22,7 @@ class Button extends React.Component {
   removeActive = (e) => {
     if (this.props.stateless) {
       e.target.classList.remove("btn-pops");
+      e.target.classList.remove("btn-pops-delayed");
     } else {
       e.target.classList.remove("btn-pops-and-turns");
       this.setState({ symbol: this.content[+this.state.open] });
@@ -34,7 +35,6 @@ class Button extends React.Component {
         onClick={this.handleClick}
         onAnimationEnd={this.removeActive}
         className={"btn btn-rounded btn-info " + this.classes}
-        value="+"
       >
         {this.state.symbol}
       </button>

@@ -46,7 +46,6 @@ class Section extends React.Component {
     this.formContainer.classList.remove("show");
     if (this.addSubsectionBtn) {
       this.addSubsectionBtn.classList.remove("full-opacity");
-      this.addSubsectionBtn.classList.remove("btn-pops-delayed");
     }
   };
 

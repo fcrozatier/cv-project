@@ -41,7 +41,6 @@ class App extends React.Component {
     const sections = Object.keys(this.state).map((index) => {
       return <Section key={+index} {...this.state[+index]} />;
     });
-    console.log(sections);
     return (
       <div className="App">
         <header>CV App</header>

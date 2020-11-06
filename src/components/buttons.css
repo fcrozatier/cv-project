@@ -5,8 +5,6 @@
   background-color: transparent;
   font-family: inherit;
   font-size: inherit;
-  /* transform: rotate(0deg);
-  transition: transform 300ms ease-in-out; */
 }
 
 .btn-rounded {
@@ -37,12 +35,6 @@
   color: white;
 }
 
-.btn-valid {
-  border: 1px solid green;
-  color: green;
-  font-size: 1em;
-}
-
 .btn-valid:hover {
   background-color: green;
   color: white;
@@ -53,7 +45,7 @@
 }
 
 .btn-pops-delayed {
-  animation: btn 300ms ease-in-out forwards;
+  animation: btn-delayed 300ms ease-in-out forwards;
   animation-delay: 300ms;
 }
 
@@ -62,6 +54,21 @@
 }
 
 @keyframes btn {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.5);
+  }
+  80% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes btn-delayed {
   0% {
     transform: scale(1);
   }
