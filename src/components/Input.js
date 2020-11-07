@@ -54,12 +54,13 @@ class Input extends React.Component {
   }
 
   render() {
-    const { name, label, type, value } = this.props;
+    const { name, label, type, value, subsection } = this.props;
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
     const params = {
-      name: name,
-      type: type,
       id: name,
+      name: name,
+      "data-subsection": subsection,
+      type: type,
       value: value,
       autoComplete: "off",
       className: "field",

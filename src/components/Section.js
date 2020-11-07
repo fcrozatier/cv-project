@@ -33,16 +33,17 @@ class Section extends React.Component {
   };
 
   createForms = () => {
-    return this.state.subsections.map((subsection) => {
-      return <Form key={uniqid()}>{this.createInputs(subsection)}</Form>;
+    return this.state.subsections.map((subsection, index) => {
+      return <Form key={uniqid()}>{this.createInputs(subsection, index)}</Form>;
     });
   };
 
-  createInputs = (subsection) => {
+  createInputs = (subsection, index) => {
     return subsection.map((field) => {
       return (
         <Input
           key={field.name}
+          subsection={index}
           name={field.name}
           label={field.label}
           type={field.type}
@@ -54,9 +55,14 @@ class Section extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState((prevState) => {
-      return { [e.target.name]: e.target.value };
+    let newSubsections = [...this.state.subsections];
+    const subsectionIndex = e.target.dataset.subsection;
+    newSubsections[subsectionIndex].forEach((field) => {
+      if (field.name === e.target.name) {
+        field.value = e.target.value;
+      }
     });
+    this.setState({ subsections: newSubsections });
   };
 
   formatDate(date) {
