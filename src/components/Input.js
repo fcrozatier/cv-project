@@ -1,12 +1,12 @@
 import React from "react";
 import "./inputs.css";
-var uniqid = require("uniqid");
+// var uniqid = require("uniqid");
 
 class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.labelId = uniqid(this.props.label);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   // this.labelId = uniqid(this.props.label);
+  // }
 
   handleChange = (e) => {
     if (e.target.validity.valid) {
@@ -21,9 +21,9 @@ class Input extends React.Component {
     if (validity.valueMissing) {
       this.displayError(e, "This field is required");
     } else if (validity.typeMismatch) {
-      this.displayError(e, `This ${e.target.name} is not valid`);
+      this.displayError(e, `This ${e.target.label} is not valid`);
     } else if (validity.patternMismatch) {
-      this.displayError(e, `The ${e.target.name} must be 10 digits long`);
+      this.displayError(e, `The ${e.target.label} must be 10 digits long`);
     } else if (validity.valid) {
       this.removeError(e);
     }
@@ -31,7 +31,7 @@ class Input extends React.Component {
 
   displayError(e, msg) {
     const errorDiv = document.querySelector(
-      `[name="${this.props.label}"] + .errorMessage`
+      `[name="${this.props.name}"] + .errorMessage`
     );
     e.target.classList.remove("valid");
     e.target.classList.add("invalid");
@@ -41,7 +41,7 @@ class Input extends React.Component {
 
   removeError(e) {
     const errorDiv = document.querySelector(
-      `[name="${this.props.label}"] + .errorMessage`
+      `[name="${this.props.name}"] + .errorMessage`
     );
     e.target.classList.remove("invalid");
     e.target.classList.add("valid");
@@ -54,13 +54,13 @@ class Input extends React.Component {
   }
 
   render() {
-    const { label, type } = this.props;
+    const { name, label, type, value } = this.props;
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
     const params = {
-      name: label,
+      name: name,
       type: type,
-      id: this.labelId,
-      value: this.props.value,
+      id: name,
+      value: value,
       autoComplete: "off",
       className: "field",
       onChange: this.handleChange,
@@ -68,9 +68,10 @@ class Input extends React.Component {
       pattern: phonePattern,
       required: true,
     };
+
     return (
       <>
-        <label className="field-label" htmlFor={this.labelId}>
+        <label className="field-label" htmlFor={name}>
           {this.capitalize(label)}
         </label>
         {type === "textarea" ? (

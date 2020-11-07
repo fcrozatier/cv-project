@@ -4,20 +4,57 @@ import Input from "./Input";
 import Button from "./Button";
 import "./section.css";
 import "./form.css";
+var uniqid = require("uniqid");
 
 class Section extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.initializeState(this.props.fields);
+    this.state = {
+      subsections: [this.initializeSubsection()],
+    };
   }
 
-  initializeState(fields) {
-    const entries = fields.map((item) => [item[0], ""]);
-    return Object.fromEntries(entries);
-  }
+  // createTemplate() {
+  //   return this.props.fields.map((item) => [item[0], ""]);
+  //   // return Object.fromEntries(entries);
+  // }
+
+  initializeSubsection = () => {
+    let subsection = [];
+    this.props.fields.forEach((field) => {
+      subsection.push({
+        name: uniqid(field[0]),
+        label: field[0],
+        value: "",
+        type: field[1],
+      });
+    });
+    return subsection;
+  };
+
+  createForms = () => {
+    return this.state.subsections.map((subsection) => {
+      return <Form key={uniqid()}>{this.createInputs(subsection)}</Form>;
+    });
+  };
+
+  createInputs = (subsection) => {
+    return subsection.map((field) => {
+      return (
+        <Input
+          key={field.name}
+          name={field.name}
+          label={field.label}
+          type={field.type}
+          value={field.value}
+          onChange={this.handleChange}
+        />
+      );
+    });
+  };
 
   handleChange = (e) => {
-    this.setState(() => {
+    this.setState((prevState) => {
       return { [e.target.name]: e.target.value };
     });
   };
@@ -54,24 +91,16 @@ class Section extends React.Component {
   };
 
   render() {
-    const inputs = this.props.fields.map((item, index) => (
-      <Input
-        key={index}
-        label={item[0]}
-        type={item[1]}
-        value={this.state[item[0]]}
-        onChange={this.handleChange}
-      />
-    ));
+    const forms = this.createForms();
 
-    const cardElems = this.props.fields.map((item, index) => (
-      <div className={item[0]} key={index}>
-        <span className="label">{item[0]}</span>
-        {item[0] === "date"
-          ? this.formatDate(this.state[item[0]])
-          : this.state[item[0]]}
-      </div>
-    ));
+    // const cardElems = this.props.fields.map((item, index) => (
+    //   <div className={item[0]} key={index}>
+    //     <span className="label">{item[0]}</span>
+    //     {item[0] === "date"
+    //       ? this.formatDate(this.state[item[0]])
+    //       : this.state[item[0]]}
+    //   </div>
+    // ));
 
     const addSubsectionBtn = this.props.clonable ? (
       <Button
@@ -87,7 +116,7 @@ class Section extends React.Component {
           <div className="card">
             <div className="card_content">
               <h2 className="section-title">{this.props.title}</h2>
-              {cardElems}
+              {/* {cardElems} */}
             </div>
             <div className="edit-section">
               <Button
@@ -98,11 +127,7 @@ class Section extends React.Component {
             </div>
           </div>
           <div className="form-displayer">
-            <div className="form-container">
-              <Form>{inputs}</Form>
-              <Form>{inputs}</Form>
-              <Form>{inputs}</Form>
-            </div>
+            <div className="form-container">{forms}</div>
             {addSubsectionBtn}
           </div>
         </div>
