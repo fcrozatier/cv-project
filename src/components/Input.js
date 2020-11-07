@@ -56,36 +56,27 @@ class Input extends React.Component {
   render() {
     const { label, type } = this.props;
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
+    const params = {
+      name: label,
+      type: type,
+      id: this.labelId,
+      value: this.props.value,
+      autoComplete: "off",
+      className: "field",
+      onChange: this.handleChange,
+      onBlur: this.validate,
+      pattern: phonePattern,
+      required: true,
+    };
     return (
       <>
         <label className="field-label" htmlFor={this.labelId}>
           {this.capitalize(label)}
         </label>
         {type === "textarea" ? (
-          <textarea
-            name={label}
-            type={type}
-            id={this.labelId}
-            value={this.props.value}
-            autoComplete="off"
-            className="field textarea"
-            onChange={this.handleChange}
-            onBlur={this.validate}
-            required
-          />
+          <textarea {...params} className="field textarea" />
         ) : (
-          <input
-            name={label}
-            type={type}
-            id={this.labelId}
-            value={this.props.value}
-            autoComplete="off"
-            className="field"
-            onChange={this.handleChange}
-            onBlur={this.validate}
-            pattern={phonePattern}
-            required
-          />
+          <input {...params} />
         )}
         <div className="errorMessage"></div>
       </>
