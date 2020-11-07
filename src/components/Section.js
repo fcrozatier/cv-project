@@ -49,6 +49,10 @@ class Section extends React.Component {
     }
   };
 
+  animationEnd = (e) => {
+    e.target.classList.remove("btn-pops-delayed");
+  };
+
   render() {
     const inputs = this.props.fields.map((item, index) => (
       <Input
@@ -70,7 +74,11 @@ class Section extends React.Component {
     ));
 
     const addSubsectionBtn = this.props.clonable ? (
-      <Button className="btn-addSubsection" stateless={true}></Button>
+      <Button
+        className="btn-addSubsection"
+        stateless={true}
+        onAnimationEnd={this.animationEnd}
+      ></Button>
     ) : null;
 
     return (
