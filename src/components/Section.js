@@ -1,6 +1,5 @@
 import React from "react";
 import Form from "./Form";
-// import Input from "./Input";
 import Button from "./Button";
 import "./section.css";
 import "./form.css";
@@ -32,7 +31,6 @@ class Section extends React.Component {
 
     this.setState((prevState) => {
       const subsections = [...prevState.subsections, subsection];
-      console.log("Section -> subsections", subsections);
       return { subsections };
     });
   };

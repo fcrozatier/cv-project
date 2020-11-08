@@ -17,6 +17,10 @@
   overflow: hidden;
 }
 
+.subsection {
+  margin-top: 20px;
+}
+
 .edit-section {
   display: grid;
   align-items: center;
