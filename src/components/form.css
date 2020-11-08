@@ -1,5 +1,6 @@
 .form-displayer {
   position: relative;
+  display: flex;
 }
 
 .form-container {
