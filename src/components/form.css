@@ -23,14 +23,11 @@
   padding: 30px 40px 35px 40px;
 }
 
-.form .btn {
+.btn-container {
   margin-top: 30px;
-  width: fit-content;
-  justify-self: center;
-}
-
-.form:last-child {
-  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .btn-addSubsection {

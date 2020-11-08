@@ -59,9 +59,20 @@ class Form extends React.Component {
           onSubmit={this.handleSubmit}
         >
           {this.createInputs(this.props.subsection)}
-          <button type="submit" className="btn btn-alt">
-            Update
-          </button>
+          <div className="btn-container">
+            <button type="submit" className="btn btn-alt">
+              Update
+            </button>
+            {this.props.clonable ? (
+              <button
+                type="button"
+                className="btn btn-alt btn-danger"
+                onClick={() => this.props.deleteSubsection(this.props.index)}
+              >
+                Delete
+              </button>
+            ) : null}
+          </div>
         </form>
       </>
     );

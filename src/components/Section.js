@@ -35,6 +35,14 @@ class Section extends React.Component {
     });
   };
 
+  deleteSubsection = (index) => {
+    this.setState((prevState) => {
+      const subsections = [...prevState.subsections];
+      subsections.splice(index, 1);
+      return { subsections };
+    });
+  };
+
   createForms = () => {
     return this.state.subsections.map((subsection, index) => {
       return (
@@ -42,7 +50,9 @@ class Section extends React.Component {
           key={uniqid()}
           index={index}
           subsection={subsection}
+          clonable={this.props.clonable}
           onSubmit={this.handleSubmit}
+          deleteSubsection={this.deleteSubsection}
         ></Form>
       );
     });

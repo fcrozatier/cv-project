@@ -35,11 +35,15 @@
   color: white;
 }
 
-.btn-valid:hover {
-  background-color: green;
-  color: white;
+.btn-danger {
+  color: rgb(190, 0, 0);
+  border: 1px solid rgb(190, 0, 0);
 }
 
+.btn-danger:hover {
+  color: white;
+  background-color: rgb(190, 0, 0);
+}
 .btn-pops {
   animation: btn 300ms ease-in-out forwards;
 }
