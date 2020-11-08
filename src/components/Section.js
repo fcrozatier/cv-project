@@ -14,11 +14,6 @@ class Section extends React.Component {
     };
   }
 
-  // createTemplate() {
-  //   return this.props.fields.map((item) => [item[0], ""]);
-  //   // return Object.fromEntries(entries);
-  // }
-
   initializeSubsection = () => {
     let subsection = [];
     this.props.fields.forEach((field) => {
@@ -55,14 +50,14 @@ class Section extends React.Component {
   };
 
   handleChange = (e) => {
-    let newSubsections = [...this.state.subsections];
+    let subsections = [...this.state.subsections];
     const subsectionIndex = e.target.dataset.subsection;
-    newSubsections[subsectionIndex].forEach((field) => {
+    subsections[subsectionIndex].forEach((field) => {
       if (field.name === e.target.name) {
         field.value = e.target.value;
       }
     });
-    this.setState({ subsections: newSubsections });
+    this.setState({ subsections });
   };
 
   formatDate(date) {

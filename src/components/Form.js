@@ -17,6 +17,9 @@ class Form extends React.Component {
       <>
         <form className="form" onSubmit={this.handleSubmit} noValidate>
           {this.props.children}
+          <button type="submit" class="btn btn-alt">
+            Update
+          </button>
         </form>
       </>
     );

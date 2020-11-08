@@ -22,6 +22,12 @@
   padding: 30px 40px 35px 40px;
 }
 
+.form .btn {
+  margin-top: 30px;
+  width: fit-content;
+  justify-self: center;
+}
+
 .form:last-child {
   margin-right: 30px;
 }
