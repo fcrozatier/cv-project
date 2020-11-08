@@ -1,13 +1,7 @@
 import React from "react";
 import "./inputs.css";
-// var uniqid = require("uniqid");
 
 class Input extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.labelId = uniqid(this.props.label);
-  // }
-
   handleChange = (e) => {
     if (e.target.validity.valid) {
       this.removeError(e);
@@ -21,9 +15,12 @@ class Input extends React.Component {
     if (validity.valueMissing) {
       this.displayError(e, "This field is required");
     } else if (validity.typeMismatch) {
-      this.displayError(e, `This ${e.target.label} is not valid`);
+      this.displayError(e, `This ${e.target.dataset.label} is not valid`);
     } else if (validity.patternMismatch) {
-      this.displayError(e, `The ${e.target.label} must be 10 digits long`);
+      this.displayError(
+        e,
+        `The ${e.target.dataset.label} must be 10 digits long`
+      );
     } else if (validity.valid) {
       this.removeError(e);
     }
@@ -54,12 +51,12 @@ class Input extends React.Component {
   }
 
   render() {
-    const { name, label, type, value, subsection } = this.props;
+    const { name, label, type, value } = this.props;
     const phonePattern = type === "phone" ? "\\d{10}" : ".+";
     const params = {
       id: name,
+      "data-label": label,
       name: name,
-      "data-subsection": subsection,
       type: type,
       value: value,
       autoComplete: "off",

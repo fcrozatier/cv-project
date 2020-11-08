@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import Input from "./Input";
+// import Input from "./Input";
 import Button from "./Button";
 import "./section.css";
 import "./form.css";
@@ -29,35 +29,43 @@ class Section extends React.Component {
 
   createForms = () => {
     return this.state.subsections.map((subsection, index) => {
-      return <Form key={uniqid()}>{this.createInputs(subsection, index)}</Form>;
-    });
-  };
-
-  createInputs = (subsection, index) => {
-    return subsection.map((field) => {
       return (
-        <Input
-          key={field.name}
-          subsection={index}
-          name={field.name}
-          label={field.label}
-          type={field.type}
-          value={field.value}
-          onChange={this.handleChange}
-        />
+        <Form
+          key={uniqid()}
+          index={index}
+          subsection={subsection}
+          onSubmit={this.handleSubmit}
+        >
+          {/* {this.createInputs(subsection)} */}
+        </Form>
       );
     });
   };
 
-  handleChange = (e) => {
-    let subsections = [...this.state.subsections];
-    const subsectionIndex = e.target.dataset.subsection;
-    subsections[subsectionIndex].forEach((field) => {
-      if (field.name === e.target.name) {
-        field.value = e.target.value;
-      }
-    });
-    this.setState({ subsections });
+  // createInputs = (subsection) => {
+  //   return subsection.map((field) => {
+  //     return (
+  //       <Input
+  //         key={field.name}
+  //         name={field.name}
+  //         label={field.label}
+  //         type={field.type}
+  //         value={field.value}
+  //       />
+  //     );
+  //   });
+  // };
+
+  handleSubmit = (e) => {
+    console.log("Section -> e", e.target);
+    // let subsections = [...this.state.subsections];
+    // const subsectionIndex = e.target.dataset.subsection;
+    // subsections[subsectionIndex].forEach((field) => {
+    //   if (field.name === e.target.name) {
+    //     field.value = e.target.value;
+    //   }
+    // });
+    // this.setState({ subsections });
   };
 
   formatDate(date) {
