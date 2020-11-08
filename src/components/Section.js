@@ -56,16 +56,17 @@ class Section extends React.Component {
   //   });
   // };
 
-  handleSubmit = (e) => {
-    console.log("Section -> e", e.target);
-    // let subsections = [...this.state.subsections];
-    // const subsectionIndex = e.target.dataset.subsection;
-    // subsections[subsectionIndex].forEach((field) => {
-    //   if (field.name === e.target.name) {
-    //     field.value = e.target.value;
-    //   }
-    // });
-    // this.setState({ subsections });
+  handleSubmit = (index, newState) => {
+    let subsections = [...this.state.subsections];
+    for (let key in newState) {
+      subsections[index].forEach((field) => {
+        if (field.name === key) {
+          field.value = newState[key];
+        }
+      });
+    }
+    this.setState({ subsections });
+    console.log(this.state);
   };
 
   formatDate(date) {

@@ -37,7 +37,10 @@ class Form extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSubmit(e);
+    const subsectionIndex = e.target.dataset.subsection;
+    if (e.target.checkValidity()) {
+      this.props.onSubmit(subsectionIndex, this.state);
+    }
   };
 
   handleChange = (e) => {
@@ -49,14 +52,14 @@ class Form extends React.Component {
   render() {
     return (
       <>
-        <form className="form" noValidate>
+        <form
+          className="form"
+          noValidate
+          data-subsection={this.props.index}
+          onSubmit={this.handleSubmit}
+        >
           {this.createInputs(this.props.subsection)}
-          <button
-            type="submit"
-            className="btn btn-alt"
-            data-subsection={this.props.index}
-            onClick={this.handleSubmit}
-          >
+          <button type="submit" className="btn btn-alt">
             Update
           </button>
         </form>
