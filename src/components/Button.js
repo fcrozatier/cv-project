@@ -17,6 +17,9 @@ class Button extends React.Component {
       this.state.open ? this.props.onClose(e) : this.props.onOpen(e);
       this.setState({ open: !this.state.open });
     }
+    if (this.props.onClick) {
+      this.props.onClick(e);
+    }
   };
 
   removeActive = (e) => {

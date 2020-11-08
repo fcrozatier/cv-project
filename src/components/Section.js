@@ -27,6 +27,16 @@ class Section extends React.Component {
     return subsection;
   };
 
+  createSubsection = () => {
+    let subsection = this.initializeSubsection();
+
+    this.setState((prevState) => {
+      const subsections = [...prevState.subsections, subsection];
+      console.log("Section -> subsections", subsections);
+      return { subsections };
+    });
+  };
+
   createForms = () => {
     return this.state.subsections.map((subsection, index) => {
       return (
@@ -102,6 +112,7 @@ class Section extends React.Component {
         className="btn-addSubsection"
         stateless={true}
         onAnimationEnd={this.animationEnd}
+        onClick={this.createSubsection}
       ></Button>
     ) : null;
 
