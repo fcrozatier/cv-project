@@ -28,7 +28,7 @@ class Form extends React.Component {
           name={name}
           label={field.label}
           type={field.type}
-          value={this.state[name].value}
+          value={this.state[name]}
           onChange={this.handleChange}
         />
       );
