@@ -35,26 +35,10 @@ class Section extends React.Component {
           index={index}
           subsection={subsection}
           onSubmit={this.handleSubmit}
-        >
-          {/* {this.createInputs(subsection)} */}
-        </Form>
+        ></Form>
       );
     });
   };
-
-  // createInputs = (subsection) => {
-  //   return subsection.map((field) => {
-  //     return (
-  //       <Input
-  //         key={field.name}
-  //         name={field.name}
-  //         label={field.label}
-  //         type={field.type}
-  //         value={field.value}
-  //       />
-  //     );
-  //   });
-  // };
 
   handleSubmit = (index, newState) => {
     let subsections = [...this.state.subsections];
@@ -66,7 +50,6 @@ class Section extends React.Component {
       });
     }
     this.setState({ subsections });
-    console.log(this.state);
   };
 
   formatDate(date) {
@@ -103,14 +86,16 @@ class Section extends React.Component {
   render() {
     const forms = this.createForms();
 
-    // const cardElems = this.props.fields.map((item, index) => (
-    //   <div className={item[0]} key={index}>
-    //     <span className="label">{item[0]}</span>
-    //     {item[0] === "date"
-    //       ? this.formatDate(this.state[item[0]])
-    //       : this.state[item[0]]}
-    //   </div>
-    // ));
+    const cardElems = this.state.subsections.map((subsection) => (
+      <div className="subsection" key={uniqid()}>
+        {subsection.map((item) => (
+          <div className={item.label} key={uniqid()}>
+            <span className="label">{item.label}</span>
+            {item.label === "date" ? this.formatDate(item.value) : item.value}
+          </div>
+        ))}
+      </div>
+    ));
 
     const addSubsectionBtn = this.props.clonable ? (
       <Button
@@ -126,7 +111,7 @@ class Section extends React.Component {
           <div className="card">
             <div className="card_content">
               <h2 className="section-title">{this.props.title}</h2>
-              {/* {cardElems} */}
+              {cardElems}
             </div>
             <div className="edit-section">
               <Button
